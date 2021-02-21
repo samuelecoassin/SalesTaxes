@@ -1,0 +1,28 @@
+﻿<Window x:Class="SalesTaxes" 
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SalesTaxes"
+        mc:Ignorable="d" d:DataContext="SalesTaxesViewModel"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <ComboBox x:Name="CBArticoli" Grid.Row="0" Margin="30, 5"
+                  ItemsSource="{Binding Articoli}" SelectedItem="{Binding ArticoloSelezionato}" DisplayMemberPath="Nome" />
+        <TextBox x:Name="TBQuant" Grid.Row="1" Margin="30, 5" 
+                 Text="{Binding QuantitàSelezionata, UpdateSourceTrigger=PropertyChanged, StringFormat=N0}" TextAlignment="Right" />
+        <StackPanel x:Name="SPPulsanti" Grid.Row="2" Orientation="Horizontal" Margin="30, 5" HorizontalAlignment="Center" >
+            <Button x:Name="BAzzera" Width="100" Margin="10, 0" Command="{Binding Azzera}" >Azzera lista</Button>
+            <Button x:Name="BAggiungi" Width="100" Margin="10, 0" Command="{Binding AggiungiArticolo}">Aggiungi articolo</Button>
+        </StackPanel>
+        <TextBox x:Name="TBRisultato" Grid.Row="3" Margin="10" IsReadOnly="True"
+                 Text="{Binding Risultato}" />
+    </Grid>
+</Window>
